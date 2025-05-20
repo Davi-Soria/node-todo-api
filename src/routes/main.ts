@@ -1,7 +1,11 @@
 import { Router } from 'express';
+import * as todoController from '../controllers/todo.controller';
 
-export const mainRouter = Router();
+const router = Router();
 
-mainRouter.get('/ping', (req, res) => {
-    res.json({ pong: true });
-});
+router.get('/todo', todoController.all);
+router.post('/todo', todoController.add);
+router.put('/todo/:id', todoController.update);
+router.delete('/todo/:id', todoController.remove)
+
+export default router;
